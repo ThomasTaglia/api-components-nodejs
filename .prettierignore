@@ -1,0 +1,14 @@
+# Editors
+.vscode/*
+
+# yarn
+.yarn/*
+.pnp.*
+
+# Output directories
+build
+coverage
+dist
+
+# Husky
+.husky/*

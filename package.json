@@ -1,0 +1,35 @@
+{
+  "name": "api-components-nodejs",
+  "version": "0.0.0",
+  "description": "Common components used to build Clean Architecture based Node.js APIs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasTaglia/api-components-nodejs.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "compile": "turbo run compile",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "check-formatting": "prettier --list-different .",
+    "fix-formatting": "prettier --write .",
+    "release": "/bin/sh scripts/release.sh",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.7",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "prettier-plugin-sh": "^0.12.8",
+    "turbo": "^1.9.3",
+    "typescript": "^5.0.4"
+  },
+  "packageManager": "yarn@3.5.0"
+}

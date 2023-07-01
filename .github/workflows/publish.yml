@@ -1,0 +1,27 @@
+name: Publish packages to NPM
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      API_COMPONENTS_NODEJS_NPM_RW_TOKEN: ${{ secrets.API_COMPONENTS_NODEJS_NPM_RW_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@cryptoaddicteds"
+      - name: Install dependencies
+        run: yarn install
+      - name: Check formatting
+        run: yarn check-formatting
+      - name: Build dependencies
+        run: yarn compile
+      - name: Publish package on NPM 📦
+        run: yarn workspaces foreach --exclude api-components-nodejs npm publish --tag="${{ github.ref_name }}" --access public --tag=latest

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "compile": {
+      "dependsOn": ["^compile"]
+    },
+    "clean": {
+      "dependsOn": ["^clean"]
+    },
+    "test": {
+      "dependsOn": ["compile"],
+      "inputs": ["src/**/*.ts"]
+    }
+  }
+}

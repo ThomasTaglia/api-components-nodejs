@@ -10,11 +10,6 @@ export default interface Request {
      */
     accessToken: string | null;
     /**
-     * The locale used for the interaction. For HTTP interactions, it's
-     * extracted from the Accept-Language header of the HTTP request.
-     */
-    locale: string;
-    /**
      * A random id identifying the interaction. For HTTP interactions, it's
      * extracted from the X-Request-Id header of the HTTP request. For AMQP
      * interactions, it's the messageId property of the AMQP message.

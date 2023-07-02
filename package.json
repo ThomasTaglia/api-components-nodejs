@@ -1,6 +1,6 @@
 {
   "name": "api-components-nodejs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Common components used to build Clean Architecture based Node.js APIs",
   "repository": {
     "type": "git",

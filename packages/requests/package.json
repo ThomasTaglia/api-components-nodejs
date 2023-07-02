@@ -1,13 +1,13 @@
 {
   "name": "@cryptoaddicteds/acn-requests",
   "version": "0.2.0",
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ThomasTaglia/api-components-nodejs.git"
   },
   "files": [
-    "build/**/*"
+    "build/src/**/*"
   ],
   "scripts": {
     "compile": "rm -rf build && tsc",

@@ -1,6 +1,6 @@
 import { RequestService } from "@cryptoaddicteds/acn-requests";
+import { createId } from "@paralleldrive/cuid2";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import cuid from "cuid";
 import qs from "qs";
 
 export default class AxiosClient {
@@ -16,9 +16,9 @@ export default class AxiosClient {
             baseURL: baseUrl,
             headers: {
                 authorization: `Bearer ${accessToken}`,
-                "x-user-id": cuid(), //TODO: recuperare l'id dello user quando sarà disponibile dall'AuthClient
+                "x-user-id": createId(), //TODO: recuperare l'id dello user quando sarà disponibile dall'AuthClient
                 "x-correlation-id": correlationId,
-                "x-request-id": cuid(),
+                "x-request-id": createId(),
                 "user-agent": userAgent,
                 "x-app-name": appName,
                 "x-app-version": appVersion,

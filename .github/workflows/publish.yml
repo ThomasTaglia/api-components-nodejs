@@ -6,8 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      API_COMPONENTS_NODEJS_NPM_RW_TOKEN: ${{ secrets.API_COMPONENTS_NODEJS_NPM_RW_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,5 +21,7 @@ jobs:
         run: yarn check-formatting
       - name: Build dependencies
         run: yarn compile
+      - name: Add NPM auth token
+        run: yarn config set -H "npmRegistries['//registry.npmjs.org'].npmAuthToken" ${{ secrets.API_COMPONENTS_NODEJS_NPM_RW_TOKEN }}
       - name: Publish package on NPM 📦
         run: yarn workspaces foreach --exclude api-components-nodejs npm publish --tag="${{ github.ref_name }}" --access public --tag=latest

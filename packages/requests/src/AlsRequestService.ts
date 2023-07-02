@@ -3,8 +3,20 @@ import MissingRequest from "./MissingRequest";
 import Request from "./Request";
 import RequestService from "./RequestService";
 
+const defaultRequest: Request = {
+    accessToken: null,
+    requestId: "",
+    correlationId: "",
+    appName: "",
+    appVersion: "",
+};
+
 export default class AlsRequestService implements RequestService {
     private readonly asyncLocalStorage = new AsyncLocalStorage<Request>();
+
+    constructor() {
+        this.asyncLocalStorage.enterWith(defaultRequest);
+    }
 
     /**
      * Sets the request for the current async-thread. Do NOT use in
@@ -21,10 +33,10 @@ export default class AlsRequestService implements RequestService {
      * async-thread)
      */
     get(): Request {
-        const Request = this.asyncLocalStorage.getStore();
-        if (!Request) {
+        const request = this.asyncLocalStorage.getStore();
+        if (!request) {
             throw new MissingRequest();
         }
-        return Request;
+        return request;
     }
 }

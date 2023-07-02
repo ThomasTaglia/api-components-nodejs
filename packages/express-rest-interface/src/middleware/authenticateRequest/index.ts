@@ -9,8 +9,11 @@ export default function authenticateRequest(
     return forwardThrownRequestHandlerErrors(async (req, _res, next) => {
         const accessToken = extractAccessToken(req);
         requestService.set({
-            ...requestService.get(),
             accessToken: accessToken,
+            requestId: (req as any).id,
+            correlationId: (req as any).correlationId,
+            appName: (req as any).downstreamInfo.appName,
+            appVersion: (req as any).downstreamInfo.appVersion,
         });
         next();
     });

@@ -1,3 +1,12 @@
+## v0.3.0 (July 3, 2023)
+
+Features:
+
+- remove locale param from Request in `requests`
+- adapt authenticateRequest of Request without locale in
+  `express-rest-interface`
+- add default value and constructor on AlsRequestService
+
 ## v0.2.0 (July 2, 2023)
 
 Features:

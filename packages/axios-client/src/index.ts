@@ -2,6 +2,7 @@ import { RequestService } from "@cryptoaddicteds/acn-requests";
 import { createId } from "@paralleldrive/cuid2";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import qs from "qs";
+import { omitNilProperties } from "./utils/omitNilProperties";
 
 export default class AxiosClient {
     private readonly axiosInstance: AxiosInstance;
@@ -14,7 +15,7 @@ export default class AxiosClient {
             requestService.get()!;
         this.axiosInstance = axios.create({
             baseURL: baseUrl,
-            headers: {
+            headers: omitNilProperties({
                 authorization: `Bearer ${accessToken}`,
                 "x-user-id": createId(), //TODO: recuperare l'id dello user quando sarà disponibile dall'AuthClient
                 "x-correlation-id": correlationId,
@@ -23,9 +24,9 @@ export default class AxiosClient {
                 "x-app-name": appName,
                 "x-app-version": appVersion,
                 "x-item-id": "no",
-            },
+            }),
             paramsSerializer: (params) =>
-                qs.stringify(params, { indices: false }),
+                qs.stringify(omitNilProperties(params), { indices: false }),
         });
     }
 

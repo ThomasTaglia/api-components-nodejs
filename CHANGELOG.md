@@ -2,6 +2,7 @@
 
 Features:
 
+- add logger implementation
 - add omitNilProperties function on AxiosClient's paramsSerializer
 
 ## v0.3.0 (July 3, 2023)

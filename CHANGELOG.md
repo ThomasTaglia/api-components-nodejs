@@ -1,3 +1,9 @@
+## v0.4.1 (July 4, 2023)
+
+Fixes:
+
+- add missing exports on logger
+
 ## v0.4.0 (July 4, 2023)
 
 Features:

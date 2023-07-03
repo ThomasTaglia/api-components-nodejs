@@ -1,4 +1,4 @@
-## vNext
+## v0.4.0 (July 4, 2023)
 
 Features:
 

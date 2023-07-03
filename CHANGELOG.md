@@ -1,3 +1,9 @@
+## v0.5.0 (July 4, 2023)
+
+Features:
+
+- use custom Logger instead of pino on packages
+
 ## v0.4.1 (July 4, 2023)
 
 Fixes:

@@ -14,7 +14,7 @@
     "compile": "yarn clean && tsc"
   },
   "dependencies": {
-    "pino": "^8.11.0"
+    "@cryptoaddicteds/acn-logger": "workspace:*"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

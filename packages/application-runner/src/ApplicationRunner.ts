@@ -1,4 +1,4 @@
-import { Logger } from "pino";
+import { Logger, getUnknownErrorDetails } from "@cryptoaddicteds/acn-logger";
 import Runnable from "./Runnable";
 
 export default class ApplicationRunner {
@@ -19,12 +19,14 @@ export default class ApplicationRunner {
             this.logger.error({
                 message: "Process uncaught exception",
                 type: "APPLICATION_ERROR",
+                details: getUnknownErrorDetails(error),
             });
         });
         this.process.on("unhandledRejection", (error: any) => {
             this.logger.error({
                 message: "Process unhandled rejection",
                 type: "APPLICATION_ERROR",
+                details: getUnknownErrorDetails(error),
             });
         });
     }
@@ -50,6 +52,7 @@ export default class ApplicationRunner {
             this.logger.fatal({
                 message: "Error starting app",
                 type: "APPLICATION_ERROR",
+                details: getUnknownErrorDetails(error),
             });
             this.process.exit(1);
         }
@@ -71,6 +74,7 @@ export default class ApplicationRunner {
             this.logger.fatal({
                 message: "Error stopping app",
                 type: "APPLICATION_ERROR",
+                details: getUnknownErrorDetails(error),
             });
             this.process.exit(1);
         }

@@ -1,4 +1,5 @@
 import { Runnable } from "@cryptoaddicteds/acn-application-runner";
+import { Logger } from "@cryptoaddicteds/acn-logger";
 import { RequestService } from "@cryptoaddicteds/acn-requests";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -7,7 +8,6 @@ import { middleware as openapiValidator } from "express-openapi-validator";
 import { OpenAPIV3 } from "express-openapi-validator/dist/framework/types";
 import http from "http";
 import { cloneDeep } from "lodash";
-import { Logger } from "pino";
 import swaggerUi from "swagger-ui-express";
 import Route from "./Route";
 import makeApiSpec from "./makeApiSpec";

@@ -1,5 +1,5 @@
+import { Logger, getUnknownErrorDetails } from "@cryptoaddicteds/acn-logger";
 import { ErrorRequestHandler } from "express";
-import { Logger } from "pino";
 import convertError from "./convertError";
 
 export default function errorHandler(logger: Logger): ErrorRequestHandler {
@@ -15,7 +15,7 @@ export default function errorHandler(logger: Logger): ErrorRequestHandler {
             logger.error({
                 message: "Unexpected 5xx error in route handler",
                 type: "APPLICATION_ERROR",
-                details: { error: err, route: route },
+                details: { error: getUnknownErrorDetails(err), route: route },
                 indexed_details_s: { route },
             });
         }
